@@ -21,12 +21,35 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('users' , [UserControllr::class , 'index']);
 
-Route::get('posts' , [PostController::class , 'index']);
+Route::prefix('users')
+    ->controller(UserControllr::class)
+    ->name('users.')
+    ->group(function (){
+    Route::get('/' , 'index')->name('index');
+    Route::get('/{id}' , 'show')->name('show');
+});
 
-Route::get('tags' , [TagControllr::class , 'index']);
+Route::prefix('posts')
+    ->controller(PostController::class)
+    ->name('posts.')
+    ->group(function (){
+        Route::get('/' , 'index')->name('index');
+        Route::get('/{id}' , 'show')->name('show');
+    });
 
-Route::get('products' , [ProductController::class , 'index']);
+Route::prefix('tags')
+    ->controller(TagControllr::class)
+    ->name('tags.')
+    ->group(function (){
+    Route::get('/' , 'index')->name('index');
+    Route::get('/{id}' , 'show')->name('show');
+});
 
-Route::get('products/{id}' , [ProductController::class , 'show']);
+Route::prefix('products')
+    ->controller(ProductController::class)
+    ->name('products.')
+    ->group(function (){
+        Route::get('/' , 'index')->name('index');
+        Route::get('/{id}' , 'show')->name('show');
+    });
