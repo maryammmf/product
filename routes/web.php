@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\TagControllr;
-use App\Http\Controllers\UserControllr;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 
 Route::prefix('users')
-    ->controller(UserControllr::class)
+    ->controller(UserController::class)
     ->name('users.')
     ->group(function (){
     Route::get('/' , 'index')->name('index');
@@ -39,7 +39,7 @@ Route::prefix('posts')
     });
 
 Route::prefix('tags')
-    ->controller(TagControllr::class)
+    ->controller(TagController::class)
     ->name('tags.')
     ->group(function (){
     Route::get('/' , 'index')->name('index');

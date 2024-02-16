@@ -10,6 +10,13 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('post' , compact('posts'));
+        return view('posts.index' , compact('posts'));
+    }
+
+    public function show(int $id)
+    {
+        $post = Post::query()->findOrFail($id);
+
+        return view('posts.show', compact('post'));
     }
 }

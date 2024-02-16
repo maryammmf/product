@@ -10,19 +10,16 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = DB::table('product')->get();
-        dd($products);
+        $products = Product::all();
+
+        return view('products.index', compact('products'));
     }
 
     public function show(int $id)
     {
         $product = Product::query()->findOrFail($id);
 
-//        if (is_null($product)){
-//            abort(404);
-//        }
-
-        dd($product);
+        return view('products.show', compact('product'));
 
     }
 }
