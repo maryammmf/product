@@ -15,18 +15,24 @@
     <div class="mb-4">
         <label for="title" class="form-label">Post Title</label>
         <input type="text" name="title" value="{{old('title')}}" id="title" class="form-control shadow-sm  bg-light bg-opacity-75">
+        @error('title')
+        <div class="text-danger">{{$message}}</div>
+        @enderror
     </div>
 
 
     <div class="mb-4">
         <label for="content" class="form-label ">Post Content</label>
         <textarea type="text" name="content" id="content" class="form-control shadow-sm bg-light bg-opacity-75">{{old('content')}}</textarea>
+        @error('content')
+        <div class="text-danger">{{$message}}</div>
+        @enderror
     </div>
 
     <div class="mb-5">
         <label for="user_id" class="form-label">User ID</label>
         <select type="number" name="user_id" id="user_id" class="form-select shadow-sm bg-light bg-opacity-75">
-            <option>select a user ID</option>
+            <option disabled >select a user ID</option>
             @foreach($userId as $user)
                 <option value="{{$user}}">{{$user}}</option>
             @endforeach

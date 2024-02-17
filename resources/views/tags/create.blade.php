@@ -14,6 +14,9 @@
     <div class="mb-4">
         <label for="name" class="form-label">Tag Name</label>
         <input type="text" name="name" value="{{old('name')}}" id="name" class="form-control shadow-sm bg-light bg-opacity-75">
+        @error('name')
+        <div class="text-danger">{{$message}}</div>
+        @enderror
     </div>
 
 

@@ -23,8 +23,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validationRules = [
-            'name'=>'required',
-            'cost'=>'required',
+            'name'=>'required|alpha',
+            'cost'=>'required|numeric',
             'description'=>'required'
         ];
         $validate = $request->validate($validationRules);

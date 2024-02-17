@@ -22,8 +22,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validationsRule = [
-            'name'=>'required',
-            'email'=>'required',
+            'name'=>'required|alpha',
+            'email'=>'required|email',
             'password'=>'required'
         ];
         $validation = $request->validate($validationsRule);

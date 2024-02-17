@@ -14,16 +14,25 @@
     <div class="mb-4">
         <label for="name" class="form-label">Product Name</label>
         <input type="text" name="name" value="{{old('name')}}" id="name" class="form-control shadow-sm bg-light bg-opacity-75">
+        @error('name')
+        <div class="text-danger">{{ $message }}</div>
+        @enderror
     </div>
 
     <div class="mb-4">
         <label for="cost" class="form-label">Product Cost</label>
         <input type="text" name="cost" value="{{old('cost')}}" id="cost" class="form-control shadow-sm bg-light bg-opacity-75">
+        @error('cost')
+        <div class="text-danger">{{ $message }}</div>
+        @enderror
     </div>
 
     <div class="mb-4">
         <label for="description" class="form-label">Product Description</label>
         <textarea type="text" name="description" id="description" class="form-control shadow-sm bg-light bg-opacity-75">{{old('description')}}</textarea>
+        @error('description')
+        <div class="text-danger">{{$message}}</div>
+        @enderror
     </div>
 
     <div class="mb-4">
