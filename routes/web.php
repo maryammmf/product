@@ -27,15 +27,21 @@ Route::prefix('users')
     ->name('users.')
     ->group(function (){
     Route::get('/' , 'index')->name('index');
-    Route::get('/{id}' , 'show')->name('show');
+    Route::get('/{id}' , 'show')->where('id' , '[0-9]+')->name('show');
+    Route::get('/create' , 'create')->name('create');
+    Route::post('/store' , 'store')->name('store');
+
 });
+
 
 Route::prefix('posts')
     ->controller(PostController::class)
     ->name('posts.')
     ->group(function (){
         Route::get('/' , 'index')->name('index');
-        Route::get('/{id}' , 'show')->name('show');
+        Route::get('/{id}' , 'show')->where('id' , '[0-9]')->name('show');
+        Route::get('/create' , 'create')->name('create');
+        Route::post('/store' , 'store')->name('store');
     });
 
 Route::prefix('tags')
@@ -43,13 +49,31 @@ Route::prefix('tags')
     ->name('tags.')
     ->group(function (){
     Route::get('/' , 'index')->name('index');
-    Route::get('/{id}' , 'show')->name('show');
+    Route::get('/{id}' , 'show')->where('id' , '[0-9]')->name('show');
+    Route::get('/create' , 'create')->name('create');
+    Route::post('/store' , 'store')->name('store');
 });
+
+
+
+
 
 Route::prefix('products')
     ->controller(ProductController::class)
     ->name('products.')
     ->group(function (){
         Route::get('/' , 'index')->name('index');
-        Route::get('/{id}' , 'show')->name('show');
+        Route::get('/{id}' , 'show')->where('id' , '[0-9]')->name('show');
+        Route::get('/create' , 'create')->name('create');
+        Route::post('/store' , 'store')->name('store');
     });
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

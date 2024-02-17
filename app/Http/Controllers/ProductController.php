@@ -11,15 +11,30 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-
         return view('products.index', compact('products'));
     }
 
     public function show(int $id)
     {
         $product = Product::query()->findOrFail($id);
-
         return view('products.show', compact('product'));
+    }
 
+    public function store(Request $request)
+    {
+        $validationRules = [
+            'name'=>'required',
+//            'cost'=>'required',
+            'description'=>'required'
+        ];
+        $validate = $request->validate($validationRules);
+        Product::query()->create($validate);
+        return redirect()->route('products.index');
+
+    }
+
+    public function create()
+    {
+        return view('products.create');
     }
 }

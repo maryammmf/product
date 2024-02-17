@@ -16,8 +16,23 @@ class UserController extends Controller
     public function show(int $id)
     {
         $user = User::query()->findOrFail($id);
-
         return view('users.show', compact('user'));
+    }
 
+    public function store(Request $request)
+    {
+        $validationsRule = [
+            'name'=>'required',
+            'email'=>'required',
+            'password'=>'required'
+        ];
+        $validation = $request->validate($validationsRule);
+        User::query()->create($validation);
+        return redirect()->route('users.index');
+    }
+
+    public function create()
+    {
+        return view('users.create');
     }
 }
