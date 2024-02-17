@@ -13,17 +13,17 @@
     @csrf
     <div class="mb-4">
         <label for="name" class="form-label">Product Name</label>
-        <input type="text" name="name" id="name" class="form-control shadow-sm bg-light bg-opacity-75">
+        <input type="text" name="name" value="{{old('name')}}" id="name" class="form-control shadow-sm bg-light bg-opacity-75">
     </div>
 
     <div class="mb-4">
         <label for="cost" class="form-label">Product Cost</label>
-        <textarea type="text" name="cost" id="cost" class="form-control shadow-sm bg-light bg-opacity-75"></textarea>
+        <input type="text" name="cost" value="{{old('cost')}}" id="cost" class="form-control shadow-sm bg-light bg-opacity-75">
     </div>
 
     <div class="mb-4">
         <label for="description" class="form-label">Product Description</label>
-        <textarea type="text" name="description" id="description" class="form-control shadow-sm bg-light bg-opacity-75"></textarea>
+        <textarea type="text" name="description" id="description" class="form-control shadow-sm bg-light bg-opacity-75">{{old('description')}}</textarea>
     </div>
 
     <div class="mb-4">

@@ -14,13 +14,13 @@
 
     <div class="mb-4">
         <label for="title" class="form-label">Post Title</label>
-        <input type="text" name="title" id="title" class="form-control shadow-sm  bg-light bg-opacity-75">
+        <input type="text" name="title" value="{{old('title')}}" id="title" class="form-control shadow-sm  bg-light bg-opacity-75">
     </div>
 
 
     <div class="mb-4">
         <label for="content" class="form-label ">Post Content</label>
-        <textarea type="text" name="content" id="content" class="form-control shadow-sm bg-light bg-opacity-75"></textarea>
+        <textarea type="text" name="content" id="content" class="form-control shadow-sm bg-light bg-opacity-75">{{old('content')}}</textarea>
     </div>
 
     <div class="mb-5">

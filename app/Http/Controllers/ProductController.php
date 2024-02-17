@@ -24,7 +24,7 @@ class ProductController extends Controller
     {
         $validationRules = [
             'name'=>'required',
-//            'cost'=>'required',
+            'cost'=>'required',
             'description'=>'required'
         ];
         $validate = $request->validate($validationRules);

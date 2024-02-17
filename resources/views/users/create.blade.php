@@ -13,17 +13,17 @@
     @csrf
     <div class="mb-4">
         <label for="name" class="form-label">User Name</label>
-        <input type="text" name="name" id="name" class="form-control shadow-sm bg-light bg-opacity-75">
+        <input type="text" name="name" value="{{old('name')}}" id="name" class="form-control shadow-sm bg-light bg-opacity-75">
     </div>
 
     <div class="mb-4">
         <label for="email" class="form-label">User Email</label>
-        <textarea type="text" name="email" id="email" class="form-control shadow-sm bg-light bg-opacity-75"></textarea>
+        <input type="text" name="email" value="{{old('email')}}" id="email" class="form-control shadow-sm bg-light bg-opacity-75">
     </div>
 
     <div class="mb-4">
         <label for="password" class="form-label">User Password</label>
-        <textarea type="text" name="password" id="password" class="form-control shadow-sm bg-light bg-opacity-75"></textarea>
+        <input type="text" name="password" id="password" class="form-control shadow-sm bg-light bg-opacity-75">
     </div>
 
     <div class="mb-4">
