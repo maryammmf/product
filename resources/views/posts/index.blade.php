@@ -18,12 +18,15 @@
         </thead>
         <tbody>
         @foreach($posts as $post)
-            <td>{{$post->title}}</td>
-            <td>{{$post->content}}</td>
-            <td>{{$post->user_id}}</td>
+           <tr>
+               <td><a href="{{route('posts.show', $post)}}">{{$post->title}}</a></td>
+               <td>{{$post->content}}</td>
+               <td>{{$post->user_id}}</td>
+           </tr>
         </tbody>
         @endforeach
 
     </table>
+    <a href="{{route('posts.create')}}">Create a new post</a>
 </body>
 </html>

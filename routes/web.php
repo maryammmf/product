@@ -32,13 +32,15 @@ Route::get('/', function () {
 
 Route::resource('users', UserController::class);
 
-Route::prefix('posts')
-    ->controller(PostController::class)
-    ->name('posts.')
-    ->group(function (){
-        Route::get('/' , 'index')->name('index');
-        Route::get('/{id}' , 'show')->name('show');
-    });
+//Route::prefix('posts')
+//    ->controller(PostController::class)
+//    ->name('posts.')
+//    ->group(function (){
+//        Route::get('/' , 'index')->name('index');
+//        Route::get('/{id}' , 'show')->name('show');
+//    });
+
+Route::resource('posts', PostController::class);
 
 Route::prefix('tags')
     ->controller(TagController::class)

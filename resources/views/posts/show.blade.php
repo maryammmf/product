@@ -8,6 +8,27 @@
     <title>Show Post</title>
 </head>
 <body>
-
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>User Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{$post->title}}</td>
+                <td>{{$post->content}}</td>
+                <td>{{$post->user_id}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{{route('posts.edit',$post)}}">Edit</a>
+    <form action="{{route('posts.destroy', $post)}}" method="post">
+        @csrf
+        @method('DELETE')
+        <input type="submit" value="Delete">
+    </form>
 </body>
 </html>
