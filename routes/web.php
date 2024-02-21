@@ -28,6 +28,8 @@ Route::prefix('users')
     ->group(function (){
     Route::get('/' , 'index')->name('index');
     Route::get('/{id}' , 'show')->name('show');
+        Route::get('register', 'register')->name('register');
+        Route::post('login', 'login')->name('login');
 });
 
 Route::prefix('posts')
@@ -36,6 +38,8 @@ Route::prefix('posts')
     ->group(function (){
         Route::get('/' , 'index')->name('index');
         Route::get('/{id}' , 'show')->name('show');
+        Route::get('create', 'create')->name('create');
+        Route::post('/', 'store')->name('store');
     });
 
 Route::prefix('tags')
@@ -44,6 +48,8 @@ Route::prefix('tags')
     ->group(function (){
     Route::get('/' , 'index')->name('index');
     Route::get('/{id}' , 'show')->name('show');
+        Route::get('create', 'create')->name('create');
+
 });
 
 Route::prefix('products')
