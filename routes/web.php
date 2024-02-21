@@ -22,13 +22,15 @@ Route::get('/', function () {
 });
 
 
-Route::prefix('users')
-    ->controller(UserController::class)
-    ->name('users.')
-    ->group(function (){
-    Route::get('/' , 'index')->name('index');
-    Route::get('/{id}' , 'show')->name('show');
-});
+//Route::prefix('users')
+//    ->controller(UserController::class)
+//    ->name('users.')
+//    ->group(function (){
+//    Route::get('/' , 'index')->name('index');
+//    Route::get('/{id}' , 'show')->name('show');
+//});
+
+Route::resource('users', UserController::class);
 
 Route::prefix('posts')
     ->controller(PostController::class)
@@ -53,3 +55,5 @@ Route::prefix('products')
         Route::get('/' , 'index')->name('index');
         Route::get('/{id}' , 'show')->name('show');
     });
+
+Route::prefix('auth');
