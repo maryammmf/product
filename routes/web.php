@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('users', UserController::class);
+Route::resource('posts', PostController::class);
+Route::resource('products', ProductController::class);
+Route::resource('tags',TagController::class);
 
 //Route::prefix('users')
 //    ->controller(UserController::class)
@@ -30,7 +34,6 @@ Route::get('/', function () {
 //    Route::get('/{id}' , 'show')->name('show');
 //});
 
-Route::resource('users', UserController::class);
 
 //Route::prefix('posts')
 //    ->controller(PostController::class)
@@ -40,22 +43,22 @@ Route::resource('users', UserController::class);
 //        Route::get('/{id}' , 'show')->name('show');
 //    });
 
-Route::resource('posts', PostController::class);
 
-Route::prefix('tags')
-    ->controller(TagController::class)
-    ->name('tags.')
-    ->group(function (){
-    Route::get('/' , 'index')->name('index');
-    Route::get('/{id}' , 'show')->name('show');
-});
+//Route::prefix('tags')
+//    ->controller(TagController::class)
+//    ->name('tags.')
+//    ->group(function (){
+//    Route::get('/' , 'index')->name('index');
+//    Route::get('/{id}' , 'show')->name('show');
+//});
 
-Route::prefix('products')
-    ->controller(ProductController::class)
-    ->name('products.')
-    ->group(function (){
-        Route::get('/' , 'index')->name('index');
-        Route::get('/{id}' , 'show')->name('show');
-    });
+//Route::prefix('products')
+//    ->controller(ProductController::class)
+//    ->name('products.')
+//    ->group(function (){
+//        Route::get('/' , 'index')->name('index');
+//        Route::get('/{id}' , 'show')->name('show');
+//    });
 
-Route::prefix('auth');
+
+

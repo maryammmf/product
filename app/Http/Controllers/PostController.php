@@ -21,18 +21,18 @@ class PostController extends Controller
         return view('posts.show', compact('post'));
     }
 
-    public  function  create()
+    public function create()
     {
         $users = User::all();
         return view('posts.create', compact('users'));
     }
 
-    public  function  store(Request $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
-            'title'=> ['required', 'string'],
-            'content'=>['required'],
-            'user_id'=>['required']
+            'title'=> ['required', 'string','min:5', 'max:25'],
+            'content'=>['required', 'string', 'min:5', 'max:255'],
+            'user_id'=>['required', 'integer']
         ]);
         Post::query()->create($validated);
         return redirect()->route('posts.index');
@@ -44,9 +44,15 @@ class PostController extends Controller
         return view('posts.edit',compact('post','users'));
     }
 
-    public  function  update(Post $post, Request $request)
+    public  function update(Post $post, Request $request)
     {
-        $post->update($request->all());
+        $validated = $request->validate([
+            'title'=> ['required', 'string','min:5', 'max:45'],
+            'content'=>['required', 'string', 'min:5', 'max:255'],
+            'user_id'=>['required', 'integer']
+        ]);
+
+        $post->update($validated);
         return redirect()->route('posts.index');
     }
 
