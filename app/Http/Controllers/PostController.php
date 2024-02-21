@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,13 +28,9 @@ class PostController extends Controller
         return view('posts.create', compact('users'));
     }
 
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $validated = $request->validate([
-            'title'=> ['required', 'string','min:5', 'max:25'],
-            'content'=>['required', 'string', 'min:5', 'max:255'],
-            'user_id'=>['required', 'integer']
-        ]);
+        $validated = $request->validated();
         Post::query()->create($validated);
         return redirect()->route('posts.index');
     }
@@ -44,15 +41,9 @@ class PostController extends Controller
         return view('posts.edit',compact('post','users'));
     }
 
-    public  function update(Post $post, Request $request)
+    public  function update(Post $post, PostRequest $request)
     {
-        $validated = $request->validate([
-            'title'=> ['required', 'string','min:5', 'max:45'],
-            'content'=>['required', 'string', 'min:5', 'max:255'],
-            'user_id'=>['required', 'integer']
-        ]);
-
-        $post->update($validated);
+        $post->update($request->validated());
         return redirect()->route('posts.index');
     }
 

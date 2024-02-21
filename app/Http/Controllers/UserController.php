@@ -49,7 +49,7 @@ class UserController extends Controller
     public  function update(User $user, Request $request)
     {
         $user->update($request->all());
-        return redirect()->route('users.index', $user);
+        return redirect()->route('users.index');
     }
 
 }

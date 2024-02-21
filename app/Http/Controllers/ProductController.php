@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,13 +29,9 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        $validated = $request->validate([
-            'name'=>['required', 'string'],
-            'cost'=>['required','integer'],
-            'description'=>['required', 'string']
-        ]);
+        $validated = $request->validated();
 
         Product::query()->create($validated);
         return redirect()->route('products.index');
@@ -44,9 +41,9 @@ class ProductController extends Controller
         return view('products.edit', compact('product'));
     }
 
-    public function update(Product $product, Request $request)
+    public function update(Product $product, ProductRequest $request)
     {
-        $product->update($request->all());
+        $product->update($request->validated());
         return redirect()->route('products.index');
     }
 

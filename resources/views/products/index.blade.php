@@ -43,7 +43,11 @@
                     </td>
                     <td><a href="{{route('products.show', $product)}}">{{$product->name}}</a></td>
                     <td>{{$product->cost}}</td>
-                    <td>{{$product->description}}</td>
+{{--                    <td>{{$product->description}}</td>--}}
+                    @if($product->description)
+                        <td>{{$product->description}}</td>
+                    @endif
+
                 </tr>
 
             @endforeach
