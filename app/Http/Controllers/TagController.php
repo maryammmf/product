@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TagRequest;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,7 @@ class TagController extends Controller
 {
     public function index()
     {
-        $tags = Tag::all();
+        $tags = Tag::query()->paginate(10);
 
         return view('tags.index', compact('tags'));
     }
@@ -27,11 +28,9 @@ class TagController extends Controller
         return view('tags.create');
     }
 
-    public function store(Request $request)
+    public function store(TagRequest $request)
     {
-        $validated = $request->validate([
-            'name'=>['required', 'string', 'min:5', 'max:100']
-        ]);
+        $validated = $request->validated();
 
         Tag::query()->create($validated);
 
@@ -43,9 +42,9 @@ class TagController extends Controller
         return view('tags.edit', compact('tag'));
     }
 
-    public function update(Request $request, Tag $tag)
+    public function update(TagRequest $request, Tag $tag)
     {
-        $tag->update($request->all());
+        $tag->update($request->validated());
 
         return redirect()->route('tags.index');
     }

@@ -43,7 +43,7 @@
 
 
         <div class="input">
-            <input type="password" name="password" placeholder="Password" value="{{old('password')}}">
+            <input type="password" name="password" placeholder="Password" value="{{ old('password') }}">
         </div>
 
         @error('password')

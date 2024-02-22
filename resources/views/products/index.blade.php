@@ -54,7 +54,7 @@
             </tbody>
         </table>
     </div>
+    {{$products->links()}}
 </div>
-
 </body>
 </html>

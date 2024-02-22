@@ -26,10 +26,7 @@ Route::resource('posts', PostController::class);
 Route::resource('products', ProductController::class);
 Route::resource('tags',TagController::class);
 
-//a 404 that you can design by your own
-//Route::fallback(function (){
-//    return ..
-//});
+
 
 //Route::prefix('users')
 //    ->controller(UserController::class)

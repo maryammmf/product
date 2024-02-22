@@ -15,7 +15,7 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        Post::factory(10)->create();
+        Post::factory(100)->create();
         $posts = Post::query()->inRandomOrder()->take(rand(1,10))->get();
 
         foreach($posts as $post)
