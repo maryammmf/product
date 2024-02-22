@@ -11,7 +11,12 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::query()->paginate(request('limit')?? Controller::DEFAULT_PAGINATE);
+        $posts = cache()->remember('posts', Controller::DEFAULT_CACHE_SECONDS, function (){
+
+            return Post::query()->paginate(request('limit')?? Controller::DEFAULT_PAGINATE);
+        }
+        );
+
         return view('posts.index' , compact('posts'));
     }
 

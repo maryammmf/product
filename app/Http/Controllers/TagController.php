@@ -10,7 +10,7 @@ class TagController extends Controller
 {
     public function index()
     {
-        $tags = Tag::query()->paginate(10);
+        $tags = Tag::query()->paginate(\request('limit')?? Controller::DEFAULT_PAGINATE);
 
         return view('tags.index', compact('tags'));
     }
