@@ -22,7 +22,7 @@ class PostController extends Controller
 
 
     public function create(){
-        $userId = User::pluck('id');
+        $userId = User::query()->orderBy('id' , 'asc')->pluck('id')->toArray();
         return view('posts.create' , compact('userId'));
     }
 
@@ -36,5 +36,34 @@ class PostController extends Controller
         Post::query()->create($validation);
         return redirect()->route('posts.index');
     }
+
+
+    public function edit(int $id)
+    {
+        $post = Post::query()->find($id);
+        $userId = User::query()->orderBy('id' , 'asc')->pluck('id')->toArray();
+        return view('posts.edit' , compact('post' , 'userId'));
+    }
+
+
+    public function update(Request $request, int $id)
+    {
+        $posts = Post::query()->findOrFail($id);
+        $posts->update([
+            'title'=>$request->title,
+            'content'=>$request->content,
+            'user_id'=>$request->user_id,
+        ]);
+        return redirect()->route('posts.index');
+    }
+
+
+    public function destroy(int $id)
+    {
+        $posts = Post::query()->findOrFail($id);
+        $posts->delete();
+        return redirect()->route('posts.index');
+    }
+
 
 }

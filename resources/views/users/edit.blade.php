@@ -9,13 +9,11 @@
     <title>Document</title>
 </head>
 <body>
-<h1 class="text-success-emphasis shadow-sm m-4 bc mb-5">Create a new User</h1>
-
-<form action="store" method="post" class="m-4 ">
+<form action="../update/{{$user['id']}}" method="post" class="m-4 ">
     @csrf
     <div class="mb-4">
         <label for="name" class="form-label">User Name</label>
-        <input type="text" name="name" value="{{old('name')}}" id="name" class="form-control shadow-sm bg-light bg-opacity-75">
+        <input type="text" name="name" value="{{$user['name']}}" id="name" class="form-control shadow-sm bg-light bg-opacity-75">
         @error('name')
         <div class="text-danger">{{$message}}</div>
         @enderror
@@ -23,7 +21,7 @@
 
     <div class="mb-4">
         <label for="email" class="form-label">User Email</label>
-        <input type="text" name="email" value="{{old('email')}}" id="email" class="form-control shadow-sm bg-light bg-opacity-75">
+        <input type="text" name="email" value="{{$user['email']}}" id="email" class="form-control shadow-sm bg-light bg-opacity-75">
         @error('email')
         <div class="text-danger">{{$message}}</div>
         @enderror
@@ -31,7 +29,7 @@
 
     <div class="mb-4">
         <label for="password" class="form-label">User Password</label>
-        <input type="text" name="password" id="password" class="form-control shadow-sm bg-light bg-opacity-75">
+        <input type="password" name="password" id="password" class="form-control shadow-sm bg-light bg-opacity-75">
         @error('password')
         <div class="text-danger">{{$message}}</div>
         @enderror

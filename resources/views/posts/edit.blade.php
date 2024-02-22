@@ -9,14 +9,12 @@
     <title>Document</title>
 </head>
 <body>
-<h1 class="text-success-emphasis shadow-sm m-4 bc mb-5">Create a new post</h1>
-
-<form action="store" method="post" class="m-4 bc">
+<form action="../update/{{$post['id']}}" method="post" class="m-4 bc">
     @csrf
 
     <div class="mb-4">
-        <label for="title" class="form-label">Post Title</label>
-        <input type="text" name="title" value="{{old('title')}}" id="title" class="form-control shadow-sm  bg-light bg-opacity-75">
+        <label for="title"  class="form-label">Post Title</label>
+        <input type="text" name="title" value="{{$post['title']}}" id="title" class="form-control shadow-sm  bg-light bg-opacity-75">
         @error('title')
         <div class="text-danger">{{$message}}</div>
         @enderror
@@ -25,7 +23,7 @@
 
     <div class="mb-4">
         <label for="content" class="form-label ">Post Content</label>
-        <textarea type="text" name="content" id="content" class="form-control shadow-sm bg-light bg-opacity-75">{{old('content')}}</textarea>
+        <textarea type="text" name="content"  id="content" class="form-control shadow-sm bg-light bg-opacity-75">{{$post['content']}}</textarea>
         @error('content')
         <div class="text-danger">{{$message}}</div>
         @enderror
@@ -42,7 +40,7 @@
     </div>
 
     <div class="mb-4">
-        <input type="submit" name="create" id="create" class="btn form-control btn-light btn-outline-success shadow-sm">
+        <input type="submit" value="Edit" name="edit" id="edit" class="btn form-control btn-light btn-outline-success shadow-sm">
     </div>
 </form>
 </body>

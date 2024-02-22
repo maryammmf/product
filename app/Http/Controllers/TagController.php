@@ -35,4 +35,29 @@ class TagController extends Controller
     {
         return view('tags.create');
     }
+
+
+    public function edit(int $id)
+    {
+        $tag = Tag::query()->find($id);
+        return view('tags.edit' , compact('tag' ));
+    }
+
+
+    public function update(Request $request, int $id)
+    {
+        $tags = Tag::query()->findOrFail($id);
+        $tags->update([
+            'name'=>$request->name,
+        ]);
+        return redirect()->route('tags.index');
+    }
+
+
+    public function destroy(int $id)
+    {
+        $tags = Tag::query()->findOrFail($id);
+        $tags->delete();
+        return redirect()->route('tags.index');
+    }
 }

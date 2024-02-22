@@ -9,13 +9,11 @@
     <title>Document</title>
 </head>
 <body>
-<h1 class="text-success-emphasis shadow-sm m-4 bc mb-5">Create a new Product</h1>
-
-<form action="store" method="post" class="m-4 ">
+<form action="../update/{{$product['id']}}" method="post" class="m-4 ">
     @csrf
     <div class="mb-4">
         <label for="name" class="form-label">Product Name</label>
-        <input type="text" name="name" value="{{old('name')}}" id="name" class="form-control shadow-sm bg-light bg-opacity-75">
+        <input type="text" name="name" value="{{$product['name']}}" id="name" class="form-control shadow-sm bg-light bg-opacity-75">
         @error('name')
         <div class="text-danger">{{ $message }}</div>
         @enderror
@@ -23,7 +21,7 @@
 
     <div class="mb-4">
         <label for="cost" class="form-label">Product Cost</label>
-        <input type="text" name="cost" value="{{old('cost')}}" id="cost" class="form-control shadow-sm bg-light bg-opacity-75">
+        <input type="text" name="cost" value="{{$product['cost']}}" id="cost" class="form-control shadow-sm bg-light bg-opacity-75">
         @error('cost')
         <div class="text-danger">{{ $message }}</div>
         @enderror
@@ -31,14 +29,14 @@
 
     <div class="mb-4">
         <label for="description" class="form-label">Product Description</label>
-        <textarea type="text" name="description" id="description" class="form-control shadow-sm bg-light bg-opacity-75">{{old('description')}}</textarea>
+        <textarea type="text" name="description" id="description" class="form-control shadow-sm bg-light bg-opacity-75">{{$product['description']}}</textarea>
         @error('description')
         <div class="text-danger">{{$message}}</div>
         @enderror
     </div>
 
     <div class="mb-4">
-        <input type="submit" name="create" id="create" class="btn form-control btn-light btn-outline-success shadow-sm">
+        <input type="submit" name="edit" value="Edit" id="create" class="btn form-control btn-light btn-outline-success shadow-sm">
     </div>
 </form>
 </body>

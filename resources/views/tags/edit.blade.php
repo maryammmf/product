@@ -9,13 +9,11 @@
     <title>Document</title>
 </head>
 <body>
-<h1 class="text-success-emphasis shadow-sm m-4 bc mb-5">Create a new Tag</h1>
-
-<form action="store" method="post" class="m-4 ">
+<form action="../update/{{$tag['id']}}" method="post" class="m-4 ">
     @csrf
     <div class="mb-4">
         <label for="name" class="form-label">Tag Name</label>
-        <input type="text" name="name" value="{{old('name')}}" id="name" class="form-control shadow-sm bg-light bg-opacity-75">
+        <input type="text" name="name" value="{{$tag['name']}}" id="name" class="form-control shadow-sm bg-light bg-opacity-75">
         @error('name')
         <div class="text-danger">{{$message}}</div>
         @enderror
@@ -23,7 +21,7 @@
 
 
     <div class="mb-4">
-        <input type="submit" name="create" id="create" class="btn form-control btn-light btn-outline-success shadow-sm">
+        <input type="submit" name="edit" id="edit" class="btn form-control btn-light btn-outline-success shadow-sm">
     </div>
 </form>
 </body>

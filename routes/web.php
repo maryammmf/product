@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('pos/{post}' , function ($s){
+    return $s;
+});
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,7 +33,9 @@ Route::prefix('users')
     Route::get('/{id}' , 'show')->where('id' , '[0-9]+')->name('show');
     Route::get('/create' , 'create')->name('create');
     Route::post('/store' , 'store')->name('store');
-
+    Route::post('/edit/{id}' , 'edit')->name('edit');
+    Route::post('/update/{id}' , 'update')->name('update');
+    Route::post('/destroy/{id}' , 'destroy')->name('destroy');
 });
 
 
@@ -42,6 +47,9 @@ Route::prefix('posts')
         Route::get('/{id}' , 'show')->where('id' , '[0-9]')->name('show');
         Route::get('/create' , 'create')->name('create');
         Route::post('/store' , 'store')->name('store');
+        Route::post('/edit/{id}' , 'edit')->name('edit');
+        Route::post('/update/{id}' , 'update')->name('update');
+        Route::post('/destroy/{id}' , 'destroy')->name('destroy');
     });
 
 Route::prefix('tags')
@@ -52,6 +60,9 @@ Route::prefix('tags')
     Route::get('/{id}' , 'show')->where('id' , '[0-9]')->name('show');
     Route::get('/create' , 'create')->name('create');
     Route::post('/store' , 'store')->name('store');
+        Route::post('/edit/{id}' , 'edit')->name('edit');
+        Route::post('/update/{id}' , 'update')->name('update');
+        Route::post('/destroy/{id}' , 'destroy')->name('destroy');
 });
 
 
@@ -66,6 +77,9 @@ Route::prefix('products')
         Route::get('/{id}' , 'show')->where('id' , '[0-9]')->name('show');
         Route::get('/create' , 'create')->name('create');
         Route::post('/store' , 'store')->name('store');
+        Route::post('/edit/{id}' , 'edit')->name('edit');
+        Route::post('/update/{id}' , 'update')->name('update');
+        Route::post('/destroy/{id}' , 'destroy')->name('destroy');
     });
 
 
