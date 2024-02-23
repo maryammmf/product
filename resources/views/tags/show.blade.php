@@ -36,7 +36,7 @@
                     <td class="d-flex">
                         <a href="{{route('tags.edit', $tag)}}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 
-                        <form action="{{ route('tags.destroy', $tag->id) }}" method="POST" style="display: inline;">
+                        <form action="{{ route('tags.destroy', $tag) }}" method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-link text-danger">

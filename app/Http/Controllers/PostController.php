@@ -11,7 +11,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = cache()->remember('posts', Controller::DEFAULT_CACHE_SECONDS, function (){
+        $page = request('page') ?? 1 ;
+        $posts = cache()->remember('posts.' . str($page), Controller::DEFAULT_CACHE_SECONDS, function (){
 
             return Post::query()->paginate(request('limit')?? Controller::DEFAULT_PAGINATE);
         }
@@ -20,10 +21,8 @@ class PostController extends Controller
         return view('posts.index' , compact('posts'));
     }
 
-    public function show(int $id)
+    public function show(Post $post)
     {
-        $post = Post::query()->findOrFail($id);
-
         return view('posts.show', compact('post'));
     }
 

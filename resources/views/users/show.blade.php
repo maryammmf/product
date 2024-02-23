@@ -40,7 +40,7 @@
                         <td>
                             <a href="{{route('users.edit', $user)}}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 {{--                            <a href="{{route('users.destroy', $user)}}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>--}}
-                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: inline;">
+                            <form action="{{ route('users.destroy', $user) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-link text-danger" onclick="return confirm('Are you sure you want to delete this user?')">

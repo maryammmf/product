@@ -15,9 +15,8 @@ class TagController extends Controller
         return view('tags.index', compact('tags'));
     }
 
-    public function show(int $id)
+    public function show(Tag $tag)
     {
-        $tag = Tag::query()->findOrFail($id);
 
         return view('tags.show', compact('tag'));
 
